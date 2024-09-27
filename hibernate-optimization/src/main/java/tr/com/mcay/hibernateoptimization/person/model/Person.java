@@ -1,5 +1,6 @@
 package tr.com.mcay.hibernateoptimization.person.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,6 +29,7 @@ public class Person {
     private String email;
 
     @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference // Ana referans
     private List<Address> addresses = new ArrayList<>();
 }
 

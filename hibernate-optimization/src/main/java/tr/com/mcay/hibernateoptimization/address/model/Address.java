@@ -1,5 +1,6 @@
 package tr.com.mcay.hibernateoptimization.address.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,6 +27,7 @@ public class Address {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "person_id", nullable = false)
+    @JsonBackReference
     private Person person;
 
     // Getters and Setters

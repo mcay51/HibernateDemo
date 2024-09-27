@@ -3,8 +3,12 @@ package tr.com.mcay.hibernateoptimization.person.service;
 import org.springframework.stereotype.Service;
 import tr.com.mcay.hibernateoptimization.address.model.Address;
 import tr.com.mcay.hibernateoptimization.address.repository.AddressRepository;
+import tr.com.mcay.hibernateoptimization.person.dto.PersonDto;
 import tr.com.mcay.hibernateoptimization.person.model.Person;
 import tr.com.mcay.hibernateoptimization.person.repository.PersonRepository;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class PersonService {
@@ -43,6 +47,25 @@ public class PersonService {
 
         personRepository.save(person);
 
+    }
+    public List<PersonDto> findAllWithAddressesJoinFetch() {
+        return personConverter(personRepository.findAllWithAddresses());
+    }
+    public List<PersonDto> findAllWithAddressesLazy() {
+        return personConverter(personRepository.findAll());
+    }
+    private List<PersonDto> personConverter(List<Person> persons){
+        List<PersonDto> personDtoList = new ArrayList<>();
+      for (Person person : persons) {
+        PersonDto personDto = new PersonDto();
+        personDto.setFirstName(person.getFirstName());
+        personDto.setLastName(person.getLastName());
+        personDto.setEmail(person.getEmail());
+        personDto.setId(person.getId());
+        personDto.setAddresses(person.getAddresses());
+        personDtoList.add(personDto);
+      }
+        return personDtoList;
     }
 }
 
