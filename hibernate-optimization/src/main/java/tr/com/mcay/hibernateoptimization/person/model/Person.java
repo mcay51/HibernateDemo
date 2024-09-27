@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.BatchSize;
 import tr.com.mcay.hibernateoptimization.address.model.Address;
 
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import java.util.List;
 @Table(name = "person")
 @Getter
 @Setter
+@BatchSize(size = 10) //her seferinde 10 adres yükleyecek şekilde ayarlanır
 public class Person {
 
     @Id
@@ -28,8 +30,8 @@ public class Person {
     @Column(name = "email", nullable = false)
     private String email;
 
-    //@OneToMany(mappedBy = "person", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @OneToMany(mappedBy = "person", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+   // @OneToMany(mappedBy = "person", fetch = FetchType.EAGER)
     @JsonManagedReference // Ana referans
     private List<Address> addresses = new ArrayList<>();
 }

@@ -69,3 +69,638 @@ databaseChangeLog:  # Liquibase'in tüm değişiklikleri takip ettiği ana yapı
             referencedTableName: person  # Yabancı anahtarın referans verdiği tablo, burada "person" tablosu.
             referencedColumnNames: id  # "person" tablosunda referans alınan sütun, burada "id" sütunu.
             constraintName: fk_address_person  # Yabancı anahtar kısıtlaması için isim belirtiliyor
+
+  - changeSet:
+      id: "3"
+      author: "mustafa.cay"
+      changes:
+        - insert:
+            tableName: "person"
+            columns:
+              - column:
+                  name: "first_name"
+                  value: "Ahmet"
+              - column:
+                  name: "last_name"
+                  value: "Yılmaz"
+              - column:
+                  name: "email"
+                  value: "ahmet.yilmaz@example.com"
+        - insert:
+            tableName: "address"
+            columns:
+              - column:
+                  name: "street"
+                  value: "123 Ana Cadde"
+              - column:
+                  name: "city"
+                  value: "İstanbul"
+              - column:
+                  name: "zip_code"
+                  value: "34000"
+              - column:
+                  name: "person_id"
+                  value: "1"
+
+  - changeSet:
+      id: "4"
+      author: "mustafa.cay"
+      changes:
+        - insert:
+            tableName: "person"
+            columns:
+              - column:
+                  name: "first_name"
+                  value: "Mehmet"
+              - column:
+                  name: "last_name"
+                  value: "Demir"
+              - column:
+                  name: "email"
+                  value: "mehmet.demir@example.com"
+        - insert:
+            tableName: "address"
+            columns:
+              - column:
+                  name: "street"
+                  value: "456 Sıraselviler Cad."
+              - column:
+                  name: "city"
+                  value: "Ankara"
+              - column:
+                  name: "zip_code"
+                  value: "06000"
+              - column:
+                  name: "person_id"
+                  value: "2"
+        - insert:
+            tableName: "address"
+            columns:
+              - column:
+                  name: "street"
+                  value: "456 Sıraselviler Cad."
+              - column:
+                  name: "city"
+                  value: "Ankara"
+              - column:
+                  name: "zip_code"
+                  value: "06000"
+              - column:
+                  name: "person_id"
+                  value: "2"
+        - insert:
+            tableName: "address"
+            columns:
+              - column:
+                  name: "street"
+                  value: "456 Sıraselviler Cad."
+              - column:
+                  name: "city"
+                  value: "Ankara"
+              - column:
+                  name: "zip_code"
+                  value: "06000"
+              - column:
+                  name: "person_id"
+                  value: "2"
+
+  - changeSet:
+      id: "5"
+      author: "mustafa.cay"
+      changes:
+        - insert:
+            tableName: "person"
+            columns:
+              - column:
+                  name: "first_name"
+                  value: "Ayşe"
+              - column:
+                  name: "last_name"
+                  value: "Kara"
+              - column:
+                  name: "email"
+                  value: "ayse.kara@example.com"
+        - insert:
+            tableName: "address"
+            columns:
+              - column:
+                  name: "street"
+                  value: "789 Yıldız Cad."
+              - column:
+                  name: "city"
+                  value: "İzmir"
+              - column:
+                  name: "zip_code"
+                  value: "35000"
+              - column:
+                  name: "person_id"
+                  value: "3"
+        - insert:
+            tableName: "address"
+            columns:
+              - column:
+                  name: "street"
+                  value: "789 Yıldız Cad."
+              - column:
+                  name: "city"
+                  value: "İzmir"
+              - column:
+                  name: "zip_code"
+                  value: "35000"
+              - column:
+                  name: "person_id"
+                  value: "3"
+
+  - changeSet:
+      id: "6"
+      author: "mustafa.cay"
+      changes:
+        - insert:
+            tableName: "person"
+            columns:
+              - column:
+                  name: "first_name"
+                  value: "Fatma"
+              - column:
+                  name: "last_name"
+                  value: "Öztürk"
+              - column:
+                  name: "email"
+                  value: "fatma.ozturk@example.com"
+        - insert:
+            tableName: "address"
+            columns:
+              - column:
+                  name: "street"
+                  value: "321 Güzeller Cad."
+              - column:
+                  name: "city"
+                  value: "Antalya"
+              - column:
+                  name: "zip_code"
+                  value: "07000"
+              - column:
+                  name: "person_id"
+                  value: "4"
+        - insert:
+            tableName: "address"
+            columns:
+              - column:
+                  name: "street"
+                  value: "321 Güzeller Cad."
+              - column:
+                  name: "city"
+                  value: "Antalya"
+              - column:
+                  name: "zip_code"
+                  value: "07000"
+              - column:
+                  name: "person_id"
+                  value: "4"
+
+  - changeSet:
+      id: "7"
+      author: "mustafa.cay"
+      changes:
+        - insert:
+            tableName: "person"
+            columns:
+              - column:
+                  name: "first_name"
+                  value: "Ali"
+              - column:
+                  name: "last_name"
+                  value: "Çelik"
+              - column:
+                  name: "email"
+                  value: "ali.celik@example.com"
+        - insert:
+            tableName: "address"
+            columns:
+              - column:
+                  name: "street"
+                  value: "135 Kale Cad."
+              - column:
+                  name: "city"
+                  value: "Bodrum"
+              - column:
+                  name: "zip_code"
+                  value: "48400"
+              - column:
+                  name: "person_id"
+                  value: "5"
+        - insert:
+            tableName: "address"
+            columns:
+              - column:
+                  name: "street"
+                  value: "135 Kale Cad."
+              - column:
+                  name: "city"
+                  value: "Bodrum"
+              - column:
+                  name: "zip_code"
+                  value: "48400"
+              - column:
+                  name: "person_id"
+                  value: "5"
+
+  - changeSet:
+      id: "8"
+      author: "mustafa.cay"
+      changes:
+        - insert:
+            tableName: "person"
+            columns:
+              - column:
+                  name: "first_name"
+                  value: "Elif"
+              - column:
+                  name: "last_name"
+                  value: "Kaya"
+              - column:
+                  name: "email"
+                  value: "elif.kaya@example.com"
+        - insert:
+            tableName: "address"
+            columns:
+              - column:
+                  name: "street"
+                  value: "654 Mavi Cad."
+              - column:
+                  name: "city"
+                  value: "Çeşme"
+              - column:
+                  name: "zip_code"
+                  value: "35930"
+              - column:
+                  name: "person_id"
+                  value: "6"
+        - insert:
+            tableName: "address"
+            columns:
+              - column:
+                  name: "street"
+                  value: "654 Mavi Cad."
+              - column:
+                  name: "city"
+                  value: "Çeşme"
+              - column:
+                  name: "zip_code"
+                  value: "35930"
+              - column:
+                  name: "person_id"
+                  value: "6"
+
+  - changeSet:
+      id: "9"
+      author: "mustafa.cay"
+      changes:
+        - insert:
+            tableName: "person"
+            columns:
+              - column:
+                  name: "first_name"
+                  value: "Canan"
+              - column:
+                  name: "last_name"
+                  value: "Aydın"
+              - column:
+                  name: "email"
+                  value: "canan.aydin@example.com"
+        - insert:
+            tableName: "address"
+            columns:
+              - column:
+                  name: "street"
+                  value: "987 Bahar Cad."
+              - column:
+                  name: "city"
+                  value: "Kayseri"
+              - column:
+                  name: "zip_code"
+                  value: "38000"
+              - column:
+                  name: "person_id"
+                  value: "7"
+        - insert:
+            tableName: "address"
+            columns:
+              - column:
+                  name: "street"
+                  value: "987 Bahar Cad."
+              - column:
+                  name: "city"
+                  value: "Kayseri"
+              - column:
+                  name: "zip_code"
+                  value: "38000"
+              - column:
+                  name: "person_id"
+                  value: "7"
+
+  - changeSet:
+      id: "10"
+      author: "mustafa.cay"
+      changes:
+        - insert:
+            tableName: "person"
+            columns:
+              - column:
+                  name: "first_name"
+                  value: "Deniz"
+              - column:
+                  name: "last_name"
+                  value: "Güneş"
+              - column:
+                  name: "email"
+                  value: "deniz.gunes@example.com"
+        - insert:
+            tableName: "address"
+            columns:
+              - column:
+                  name: "street"
+                  value: "888 Yaz Cad."
+              - column:
+                  name: "city"
+                  value: "Sakarya"
+              - column:
+                  name: "zip_code"
+                  value: "54000"
+              - column:
+                  name: "person_id"
+                  value: "8"
+        - insert:
+            tableName: "address"
+            columns:
+              - column:
+                  name: "street"
+                  value: "888 Yaz Cad."
+              - column:
+                  name: "city"
+                  value: "Sakarya"
+              - column:
+                  name: "zip_code"
+                  value: "54000"
+              - column:
+                  name: "person_id"
+                  value: "8"
+  - changeSet:
+      id: "11"
+      author: "mustafa.cay"
+      changes:
+        - insert:
+            tableName: "person"
+            columns:
+              - column:
+                  name: "first_name"
+                  value: "Selin"
+              - column:
+                  name: "last_name"
+                  value: "Yalçın"
+              - column:
+                  name: "email"
+                  value: "selin.yalcin@example.com"
+        - insert:
+            tableName: "address"
+            columns:
+              - column:
+                  name: "street"
+                  value: "147 Yeşil Cad."
+              - column:
+                  name: "city"
+                  value: "Bursa"
+              - column:
+                  name: "zip_code"
+                  value: "16000"
+              - column:
+                  name: "person_id"
+                  value: "9"
+        - insert:
+            tableName: "address"
+            columns:
+              - column:
+                  name: "street"
+                  value: "147 Yeşil Cad."
+              - column:
+                  name: "city"
+                  value: "Bursa"
+              - column:
+                  name: "zip_code"
+                  value: "16000"
+              - column:
+                  name: "person_id"
+                  value: "9"
+
+  - changeSet:
+      id: "12"
+      author: "mustafa.cay"
+      changes:
+        - insert:
+            tableName: "person"
+            columns:
+              - column:
+                  name: "first_name"
+                  value: "Merve"
+              - column:
+                  name: "last_name"
+                  value: "Koç"
+              - column:
+                  name: "email"
+                  value: "merve.koc@example.com"
+        - insert:
+            tableName: "address"
+            columns:
+              - column:
+                  name: "street"
+                  value: "369 Altın Cad."
+              - column:
+                  name: "city"
+                  value: "Konya"
+              - column:
+                  name: "zip_code"
+                  value: "42000"
+              - column:
+                  name: "person_id"
+                  value: "10"
+  - changeSet:
+      id: "13"
+      author: "mustafa.cay"
+      changes:
+        - insert:
+            tableName: "person"
+            columns:
+              - column:
+                  name: "first_name"
+                  value: "Emre"
+              - column:
+                  name: "last_name"
+                  value: "Çelik"
+              - column:
+                  name: "email"
+                  value: "emre.celik@example.com"
+        - insert:
+            tableName: "address"
+            columns:
+              - column:
+                  name: "street"
+                  value: "12 Kırmızı Cad."
+              - column:
+                  name: "city"
+                  value: "Ankara"
+              - column:
+                  name: "zip_code"
+                  value: "06000"
+              - column:
+                  name: "person_id"
+                  value: "11"
+        - insert:
+            tableName: "address"
+            columns:
+              - column:
+                  name: "street"
+                  value: "34 Mavi Cad."
+              - column:
+                  name: "city"
+                  value: "İstanbul"
+              - column:
+                  name: "zip_code"
+                  value: "34000"
+              - column:
+                  name: "person_id"
+                  value: "11"
+        - insert:
+            tableName: "address"
+            columns:
+              - column:
+                  name: "street"
+                  value: "56 Sarı Cad."
+              - column:
+                  name: "city"
+                  value: "İzmir"
+              - column:
+                  name: "zip_code"
+                  value: "35000"
+              - column:
+                  name: "person_id"
+                  value: "11"
+        - insert:
+            tableName: "address"
+            columns:
+              - column:
+                  name: "street"
+                  value: "78 Beyaz Cad."
+              - column:
+                  name: "city"
+                  value: "Antalya"
+              - column:
+                  name: "zip_code"
+                  value: "07000"
+              - column:
+                  name: "person_id"
+                  value: "11"
+        - insert:
+            tableName: "address"
+            columns:
+              - column:
+                  name: "street"
+                  value: "90 Yeşil Cad."
+              - column:
+                  name: "city"
+                  value: "Bodrum"
+              - column:
+                  name: "zip_code"
+                  value: "48400"
+              - column:
+                  name: "person_id"
+                  value: "11"
+        - insert:
+            tableName: "address"
+            columns:
+              - column:
+                  name: "street"
+                  value: "23 Gökkuşağı Cad."
+              - column:
+                  name: "city"
+                  value: "Sakarya"
+              - column:
+                  name: "zip_code"
+                  value: "54000"
+              - column:
+                  name: "person_id"
+                  value: "11"
+        - insert:
+            tableName: "address"
+            columns:
+              - column:
+                  name: "street"
+                  value: "45 Fırtına Cad."
+              - column:
+                  name: "city"
+                  value: "Trabzon"
+              - column:
+                  name: "zip_code"
+                  value: "61000"
+              - column:
+                  name: "person_id"
+                  value: "11"
+        - insert:
+            tableName: "address"
+            columns:
+              - column:
+                  name: "street"
+                  value: "67 Sıcak Cad."
+              - column:
+                  name: "city"
+                  value: "Gaziantep"
+              - column:
+                  name: "zip_code"
+                  value: "27000"
+              - column:
+                  name: "person_id"
+                  value: "11"
+        - insert:
+            tableName: "address"
+            columns:
+              - column:
+                  name: "street"
+                  value: "89 Soğuk Cad."
+              - column:
+                  name: "city"
+                  value: "Kocaeli"
+              - column:
+                  name: "zip_code"
+                  value: "41000"
+              - column:
+                  name: "person_id"
+                  value: "11"
+        - insert:
+            tableName: "address"
+            columns:
+              - column:
+                  name: "street"
+                  value: "12 Duman Cad."
+              - column:
+                  name: "city"
+                  value: "Kars"
+              - column:
+                  name: "zip_code"
+                  value: "36000"
+              - column:
+                  name: "person_id"
+                  value: "11"
+        - insert:
+            tableName: "address"
+            columns:
+              - column:
+                  name: "street"
+                  value: "34 Yağmur Cad."
+              - column:
+                  name: "city"
+                  value: "Sivas"
+              - column:
+                  name: "zip_code"
+                  value: "58000"
+              - column:
+                  name: "person_id"
+                  value: "11"

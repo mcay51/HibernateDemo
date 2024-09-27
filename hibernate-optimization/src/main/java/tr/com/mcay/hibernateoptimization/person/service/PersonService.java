@@ -3,12 +3,14 @@ package tr.com.mcay.hibernateoptimization.person.service;
 import org.springframework.stereotype.Service;
 import tr.com.mcay.hibernateoptimization.address.model.Address;
 import tr.com.mcay.hibernateoptimization.address.repository.AddressRepository;
-import tr.com.mcay.hibernateoptimization.person.dto.PersonDto;
+import tr.com.mcay.hibernateoptimization.person.dto.PersonDTO;
+import tr.com.mcay.hibernateoptimization.person.dto.mapper.PersonMapper;
 import tr.com.mcay.hibernateoptimization.person.model.Person;
 import tr.com.mcay.hibernateoptimization.person.repository.PersonRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PersonService {
@@ -48,24 +50,36 @@ public class PersonService {
         personRepository.save(person);
 
     }
-    public List<PersonDto> findAllWithAddressesJoinFetch() {
-        return personConverter(personRepository.findAllWithAddresses());
+    public List<PersonDTO> findAllWithAddressesJoinFetch() {
+        List<Person> persons = personRepository.findAllWithAddresses();
+        return persons.stream()
+                .map(PersonMapper.INSTANCE::personToPersonDTO)
+                .collect(Collectors.toList());
     }
-    public List<PersonDto> findAllWithAddressesLazy() {
-        return personConverter(personRepository.findAll());
+    public List<PersonDTO> findAllWithAddressesLazy() {
+        List<Person> persons = personRepository.findAll();
+        return persons.stream()
+                .map(PersonMapper.INSTANCE::personToPersonDTO)
+                .collect(Collectors.toList());
     }
-    private List<PersonDto> personConverter(List<Person> persons){
-        List<PersonDto> personDtoList = new ArrayList<>();
+    private List<PersonDTO> personConverter(List<Person> persons){
+        List<PersonDTO> personDTOList = new ArrayList<>();
       for (Person person : persons) {
-        PersonDto personDto = new PersonDto();
+        PersonDTO personDto = new PersonDTO();
         personDto.setFirstName(person.getFirstName());
         personDto.setLastName(person.getLastName());
         personDto.setEmail(person.getEmail());
         personDto.setId(person.getId());
-        //personDto.setAddresses(person.getAddresses());
-        personDtoList.add(personDto);
+        personDto.setAddresses(person.getAddresses());
+        personDTOList.add(personDto);
       }
-        return personDtoList;
+        return personDTOList;
+    }
+
+    public PersonDTO createPerson(PersonDTO personDTO) {
+        Person person = PersonMapper.INSTANCE.personDTOToPerson(personDTO);
+        Person savedPerson = personRepository.save(person);
+        return PersonMapper.INSTANCE.personToPersonDTO(savedPerson);
     }
 }
 

@@ -1,10 +1,9 @@
 package tr.com.mcay.hibernateoptimization.person.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import tr.com.mcay.hibernateoptimization.person.dto.PersonDto;
-import tr.com.mcay.hibernateoptimization.person.model.Person;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import tr.com.mcay.hibernateoptimization.person.dto.PersonDTO;
 import tr.com.mcay.hibernateoptimization.person.service.PersonService;
 
 import java.util.List;
@@ -23,12 +22,20 @@ public class PersonController {
     }
 
     @GetMapping("/find-all-person-join-fetch-address")
-    public List<PersonDto> findAllPersonWithAddessJoinFetch() {
-       return  personService.findAllWithAddressesJoinFetch();
+    public ResponseEntity<List<PersonDTO>> findAllPersonWithAddessJoinFetch() {
+       return  ResponseEntity.ok(personService.findAllWithAddressesJoinFetch());
     }
 
     @GetMapping("/find-all-person-lazy-address")
-    public List<PersonDto> findAllPersonWithAddessLazy() {
-        return  personService.findAllWithAddressesLazy();
+    public ResponseEntity<List<PersonDTO>> findAllPersonWithAddessLazy() {
+        return ResponseEntity.ok(personService.findAllWithAddressesLazy());
     }
+
+    @PostMapping("/persons")
+    public ResponseEntity<PersonDTO> createPerson(@RequestBody PersonDTO personDTO) {
+        PersonDTO createdPerson = personService.createPerson(personDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdPerson);
+    }
+
+
 }
