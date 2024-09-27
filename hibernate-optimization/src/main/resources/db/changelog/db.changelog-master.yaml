@@ -1,30 +1,71 @@
 databaseChangeLog:  # Liquibase'in tüm değişiklikleri takip ettiği ana yapı.
-  - changeSet:      # Bir veya daha fazla değişikliği bir arada içeren set. Her changeSet benzersiz bir kimlik ve yazar bilgisi içerir.
-      id: 1         # Bu changeSet için benzersiz bir kimlik. Her bir changeSet'in farklı bir id'si olmalıdır.
-      author: student  # Bu changeSet'i oluşturan kişinin adı. Genellikle geliştiricinin ismi ya da takma adı.
+  - changeSet:       # Bir veya daha fazla değişikliği içeren set. Her changeset benzersiz bir id ve author içerir.
+      id: 1          # Bu changeSet'in benzersiz kimliği. Her changeSet'te farklı bir id olmalıdır.
+      author: mustafa.cay  # Bu changeSet'i oluşturan kişinin adı. Genellikle geliştiricinin ismi olur.
       changes:       # Bu changeSet'te yapılacak değişikliklerin listesi.
-        - createTable:  # Yeni bir tablo oluşturmak için kullanılan komut.
-            tableName: person  # Oluşturulacak tablonun adı. Burada tablo ismi "person".
-            columns:  # Tabloda yer alacak sütunların listesi.
+        - createTable:  # Yeni bir tablo oluşturma işlemi.
+            tableName: person  # Oluşturulacak tablonun adı. Burada "person" tablosu oluşturuluyor.
+            columns:    # Bu tabloya eklenecek sütunların listesi.
               - column:  # İlk sütun tanımı.
-                  name: id  # Sütunun adı. Burada "id" adında bir sütun oluşturuluyor.
-                  type: BIGINT  # Sütunun veri tipi. "BIGINT" büyük tam sayı tipi.
+                  name: id  # Sütunun adı, burada "id" adında bir sütun oluşturuluyor.
+                  type: BIGINT  # Sütunun veri tipi. "BIGINT" büyük tam sayı veri tipidir.
                   autoIncrement: true  # Sütunun otomatik olarak artmasını sağlar (genellikle kimlik sütunları için kullanılır).
                   constraints:  # Sütun için tanımlanan kısıtlamalar.
                     primaryKey: true  # Bu sütunun birincil anahtar olduğunu belirtir.
                     nullable: false  # Bu sütunun boş (null) olamayacağını belirtir.
               - column:  # İkinci sütun tanımı.
                   name: first_name  # "first_name" adında bir sütun oluşturuluyor.
-                  type: VARCHAR(255)  # Sütunun veri tipi. Bu, maksimum 255 karakter uzunluğunda bir metin sütunu.
+                  type: VARCHAR(255)  # Sütunun veri tipi. Maksimum 255 karakter uzunluğunda bir metin sütunu.
                   constraints:  # Bu sütun için kısıtlamalar.
                     nullable: false  # Bu sütun boş bırakılamaz (null olamaz).
               - column:  # Üçüncü sütun tanımı.
                   name: last_name  # "last_name" adında bir sütun oluşturuluyor.
-                  type: VARCHAR(255)  # 255 karaktere kadar metin kabul eden bir sütun.
-                  constraints:  # Sütun için kısıtlamalar.
-                    nullable: false  # Bu sütun boş bırakılamaz.
+                  type: VARCHAR(255)  # Maksimum 255 karakter uzunluğunda bir metin sütunu.
+                  constraints:  # Sütun için tanımlanan kısıtlamalar.
+                    nullable: false  # Bu sütun boş bırakılamaz (null olamaz).
               - column:  # Dördüncü sütun tanımı.
                   name: email  # "email" adında bir sütun oluşturuluyor.
-                  type: VARCHAR(255)  # 255 karaktere kadar e-posta adresi saklayacak bir metin sütunu.
+                  type: VARCHAR(255)  # Maksimum 255 karakter uzunluğunda bir metin sütunu.
                   constraints:  # Sütun için tanımlanan kısıtlamalar.
-                    nullable: false  # E-posta sütunu boş bırakılamaz (null olamaz).
+                    nullable: false  # Bu sütun boş bırakılamaz (null olamaz).
+
+  - changeSet:       # İkinci bir changeSet başlıyor.
+      id: 2          # İkinci changeSet'in benzersiz kimliği.
+      author: mustafa.cay  # İkinci changeSet'in yazarı.
+      changes:       # Bu changeSet'te yapılacak değişikliklerin listesi.
+        - createTable:  # Yeni bir tablo oluşturma işlemi.
+            tableName: address  # Oluşturulacak tablonun adı. Burada "address" tablosu oluşturuluyor.
+            columns:    # Bu tabloya eklenecek sütunların listesi.
+              - column:  # İlk sütun tanımı.
+                  name: id  # "id" adında bir sütun oluşturuluyor.
+                  type: BIGINT  # Sütunun veri tipi. "BIGINT" büyük tam sayı veri tipidir.
+                  autoIncrement: true  # Sütunun otomatik olarak artmasını sağlar.
+                  constraints:  # Sütun için tanımlanan kısıtlamalar.
+                    primaryKey: true  # Bu sütunun birincil anahtar olduğunu belirtir.
+                    nullable: false  # Bu sütunun boş olamayacağını belirtir.
+              - column:  # İkinci sütun tanımı.
+                  name: street  # "street" adında bir sütun oluşturuluyor.
+                  type: VARCHAR(255)  # Maksimum 255 karakter uzunluğunda bir metin sütunu.
+                  constraints:  # Sütun için tanımlanan kısıtlamalar.
+                    nullable: false  # Bu sütun boş bırakılamaz.
+              - column:  # Üçüncü sütun tanımı.
+                  name: city  # "city" adında bir sütun oluşturuluyor.
+                  type: VARCHAR(255)  # Maksimum 255 karakter uzunluğunda bir metin sütunu.
+                  constraints:  # Sütun için tanımlanan kısıtlamalar.
+                    nullable: false  # Bu sütun boş bırakılamaz (null olamaz).
+              - column:  # Dördüncü sütun tanımı.
+                  name: zip_code  # "zip_code" adında bir sütun oluşturuluyor.
+                  type: VARCHAR(50)  # Maksimum 50 karakter uzunluğunda bir metin sütunu.
+                  constraints:  # Sütun için tanımlanan kısıtlamalar.
+                    nullable: false  # Bu sütun boş bırakılamaz (null olamaz).
+              - column:  # Beşinci sütun tanımı.
+                  name: person_id  # "person_id" adında bir sütun oluşturuluyor, bu sütun person tablosuyla ilişkili olacak.
+                  type: BIGINT  # Veri tipi BIGINT, person tablosundaki id'ye referans verir.
+                  constraints:  # Sütun için tanımlanan kısıtlamalar.
+                    nullable: false  # Bu sütun boş olamaz, person tablosundaki bir id'ye referans vermesi gereklidir.
+        - addForeignKeyConstraint:  # İki tablo arasında bir yabancı anahtar ilişkisi oluşturmak için kullanılır.
+            baseTableName: address  # Yabancı anahtarın olduğu tablo, burada "address" tablosu.
+            baseColumnNames: person_id  # "address" tablosunda yabancı anahtar olarak kullanılacak sütun, burada "person_id".
+            referencedTableName: person  # Yabancı anahtarın referans verdiği tablo, burada "person" tablosu.
+            referencedColumnNames: id  # "person" tablosunda referans alınan sütun, burada "id" sütunu.
+            constraintName: fk_address_person  # Yabancı anahtar kısıtlaması için isim belirtiliyor

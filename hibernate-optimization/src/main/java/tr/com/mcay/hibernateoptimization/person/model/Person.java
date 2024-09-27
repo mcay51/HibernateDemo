@@ -3,6 +3,10 @@ package tr.com.mcay.hibernateoptimization.person.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import tr.com.mcay.hibernateoptimization.address.model.Address;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "person")
@@ -23,6 +27,7 @@ public class Person {
     @Column(name = "email", nullable = false)
     private String email;
 
-    // Getters and Setters
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Address> addresses = new ArrayList<>();
 }
 
