@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>tr.com.mcay</groupId>
-    <artifactId>HibernateOptimization</artifactId>
+    <artifactId>hibernate-optimization</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>HibernateOptimization</name>
-    <description>HibernateOptimization</description>
+    <name>hibernate-optimization</name>
+    <description>Hibernate Optimization</description>
     <url/>
     <licenses>
         <license/>
@@ -53,6 +53,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <!-- Liquibase -->
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
         </dependency>
     </dependencies>
 

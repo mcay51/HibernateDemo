@@ -1,0 +1,30 @@
+databaseChangeLog:  # Liquibase'in tüm değişiklikleri takip ettiği ana yapı.
+  - changeSet:      # Bir veya daha fazla değişikliği bir arada içeren set. Her changeSet benzersiz bir kimlik ve yazar bilgisi içerir.
+      id: 1         # Bu changeSet için benzersiz bir kimlik. Her bir changeSet'in farklı bir id'si olmalıdır.
+      author: student  # Bu changeSet'i oluşturan kişinin adı. Genellikle geliştiricinin ismi ya da takma adı.
+      changes:       # Bu changeSet'te yapılacak değişikliklerin listesi.
+        - createTable:  # Yeni bir tablo oluşturmak için kullanılan komut.
+            tableName: person  # Oluşturulacak tablonun adı. Burada tablo ismi "person".
+            columns:  # Tabloda yer alacak sütunların listesi.
+              - column:  # İlk sütun tanımı.
+                  name: id  # Sütunun adı. Burada "id" adında bir sütun oluşturuluyor.
+                  type: BIGINT  # Sütunun veri tipi. "BIGINT" büyük tam sayı tipi.
+                  autoIncrement: true  # Sütunun otomatik olarak artmasını sağlar (genellikle kimlik sütunları için kullanılır).
+                  constraints:  # Sütun için tanımlanan kısıtlamalar.
+                    primaryKey: true  # Bu sütunun birincil anahtar olduğunu belirtir.
+                    nullable: false  # Bu sütunun boş (null) olamayacağını belirtir.
+              - column:  # İkinci sütun tanımı.
+                  name: first_name  # "first_name" adında bir sütun oluşturuluyor.
+                  type: VARCHAR(255)  # Sütunun veri tipi. Bu, maksimum 255 karakter uzunluğunda bir metin sütunu.
+                  constraints:  # Bu sütun için kısıtlamalar.
+                    nullable: false  # Bu sütun boş bırakılamaz (null olamaz).
+              - column:  # Üçüncü sütun tanımı.
+                  name: last_name  # "last_name" adında bir sütun oluşturuluyor.
+                  type: VARCHAR(255)  # 255 karaktere kadar metin kabul eden bir sütun.
+                  constraints:  # Sütun için kısıtlamalar.
+                    nullable: false  # Bu sütun boş bırakılamaz.
+              - column:  # Dördüncü sütun tanımı.
+                  name: email  # "email" adında bir sütun oluşturuluyor.
+                  type: VARCHAR(255)  # 255 karaktere kadar e-posta adresi saklayacak bir metin sütunu.
+                  constraints:  # Sütun için tanımlanan kısıtlamalar.
+                    nullable: false  # E-posta sütunu boş bırakılamaz (null olamaz).

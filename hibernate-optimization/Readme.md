@@ -1,4 +1,4 @@
-# Proje: Mikroservis Uygulaması ile JPA ve Hibernate İleri Seviye Kullanımı
+# Proje: JPA ve Hibernate İleri Seviye Kullanımı
 
 ## 1. Proje Yapısı ve Gereksinimler
 Bu projede, Spring Boot ile bir mikroservis uygulaması geliştireceğiz. Aşağıdaki teknolojiler ve yaklaşımlar kullanılacaktır:
