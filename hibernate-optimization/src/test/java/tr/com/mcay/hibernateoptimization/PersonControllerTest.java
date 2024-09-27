@@ -16,6 +16,7 @@ import tr.com.mcay.hibernateoptimization.person.service.PersonService;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -45,6 +46,33 @@ public class PersonControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(new ObjectMapper().writeValueAsString(personDTO)))
                 .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.firstName").value("Ahmet"));
+    }
+    @Test
+    public void testGetPersonWithAddressesEager() throws Exception {
+        PersonDTO personDTO = new PersonDTO();
+        personDTO.setFirstName("Ahmet");
+        personDTO.setLastName("Yılmaz");
+        personDTO.setEmail("ahmet.yilmaz@example.com");
+
+        when(personService.getPersonByIdEager(1L)).thenReturn(personDTO);
+
+        mockMvc.perform(get("/api/persons/eager/1"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.firstName").value("Ahmet"));
+    }
+
+    @Test
+    public void testGetPersonWithAddressesLazy() throws Exception {
+        PersonDTO personDTO = new PersonDTO();
+        personDTO.setFirstName("Ahmet");
+        personDTO.setLastName("Yılmaz");
+        personDTO.setEmail("ahmet.yilmaz@example.com");
+
+        when(personService.getPersonByIdLazy(1L)).thenReturn(personDTO);
+
+        mockMvc.perform(get("/api/persons/lazy/1"))
+                .andExpect(status().isOk())
                 .andExpect(jsonPath("$.firstName").value("Ahmet"));
     }
 }

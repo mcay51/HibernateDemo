@@ -37,5 +37,17 @@ public class PersonController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdPerson);
     }
 
+    @GetMapping("/persons/eager/{id}")
+    public ResponseEntity<PersonDTO> getPersonWithAddressesEager(@PathVariable Long id) {
+        PersonDTO personDTO = personService.getPersonByIdEager(id);
+        return ResponseEntity.ok(personDTO);
+    }
+
+    @GetMapping("/persons/lazy/{id}")
+    public ResponseEntity<PersonDTO> getPersonWithAddressesLazy(@PathVariable Long id) {
+        PersonDTO personDTO = personService.getPersonByIdLazy(id);
+        return ResponseEntity.ok(personDTO);
+    }
+
 
 }

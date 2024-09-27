@@ -26,6 +26,7 @@ public class Address {
     private String zipCode;
 
     @ManyToOne(fetch = FetchType.LAZY)
+   // @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "person_id", nullable = false)
     @JsonBackReference
     private Person person;

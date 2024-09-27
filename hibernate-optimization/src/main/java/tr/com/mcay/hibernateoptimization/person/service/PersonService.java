@@ -1,5 +1,6 @@
 package tr.com.mcay.hibernateoptimization.person.service;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 import tr.com.mcay.hibernateoptimization.address.model.Address;
 import tr.com.mcay.hibernateoptimization.address.repository.AddressRepository;
@@ -80,6 +81,17 @@ public class PersonService {
         Person person = PersonMapper.INSTANCE.personDTOToPerson(personDTO);
         Person savedPerson = personRepository.save(person);
         return PersonMapper.INSTANCE.personToPersonDTO(savedPerson);
+    }
+
+    public PersonDTO getPersonByIdEager(Long id) {
+        Person person = personRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Person not found"));
+        return PersonMapper.INSTANCE.personToPersonDTO(person);
+    }
+
+    public PersonDTO getPersonByIdLazy(Long id) {
+        Person person = personRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Person not found"));
+        System.out.println("Bu noktada addresses henüz yüklenmemiştir.");
+        return PersonMapper.INSTANCE.personToPersonDTO(person);
     }
 }
 
