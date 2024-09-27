@@ -62,7 +62,7 @@ public class PersonService {
         personDto.setLastName(person.getLastName());
         personDto.setEmail(person.getEmail());
         personDto.setId(person.getId());
-        personDto.setAddresses(person.getAddresses());
+        //personDto.setAddresses(person.getAddresses());
         personDtoList.add(personDto);
       }
         return personDtoList;

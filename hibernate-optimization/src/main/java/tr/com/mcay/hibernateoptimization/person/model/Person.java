@@ -28,7 +28,8 @@ public class Person {
     @Column(name = "email", nullable = false)
     private String email;
 
-    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    //@OneToMany(mappedBy = "person", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "person", fetch = FetchType.EAGER)
     @JsonManagedReference // Ana referans
     private List<Address> addresses = new ArrayList<>();
 }
