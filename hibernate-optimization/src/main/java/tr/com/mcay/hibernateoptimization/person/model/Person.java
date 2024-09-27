@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.BatchSize;
+import tr.com.mcay.hibernateoptimization.address.dto.AddressDTO;
+import tr.com.mcay.hibernateoptimization.address.dto.mapper.AddressMapper;
 import tr.com.mcay.hibernateoptimization.address.model.Address;
 
 import java.util.ArrayList;
@@ -31,8 +33,9 @@ public class Person {
     private String email;
 
     @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-   // @OneToMany(mappedBy = "person", fetch = FetchType.EAGER)
+    //@OneToMany(mappedBy = "person", fetch = FetchType.EAGER)
     @JsonManagedReference // Ana referans
     private List<Address> addresses = new ArrayList<>();
+
 }
 

@@ -5,15 +5,22 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import tr.com.mcay.hibernateoptimization.address.model.Address;
 import tr.com.mcay.hibernateoptimization.person.controller.PersonController;
 import tr.com.mcay.hibernateoptimization.person.dto.PersonDTO;
+import tr.com.mcay.hibernateoptimization.person.model.Person;
+import tr.com.mcay.hibernateoptimization.person.repository.PersonRepository;
 import tr.com.mcay.hibernateoptimization.person.service.PersonService;
 
+import java.util.List;
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -75,5 +82,6 @@ public class PersonControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.firstName").value("Ahmet"));
     }
+
 }
 

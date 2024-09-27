@@ -2,6 +2,7 @@ package tr.com.mcay.hibernateoptimization.person.dto;
 
 import lombok.Getter;
 import lombok.Setter;
+import tr.com.mcay.hibernateoptimization.address.dto.AddressDTO;
 import tr.com.mcay.hibernateoptimization.address.model.Address;
 
 import java.util.ArrayList;

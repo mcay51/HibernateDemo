@@ -2,6 +2,8 @@ package tr.com.mcay.hibernateoptimization.person.dto.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
+import tr.com.mcay.hibernateoptimization.address.dto.AddressDTO;
+import tr.com.mcay.hibernateoptimization.address.model.Address;
 import tr.com.mcay.hibernateoptimization.person.dto.PersonDTO;
 import tr.com.mcay.hibernateoptimization.person.model.Person;
 
@@ -11,4 +13,4 @@ public interface PersonMapper {
 
     PersonDTO personToPersonDTO(Person person);
     Person personDTOToPerson(PersonDTO personDTO);
-}
+  }

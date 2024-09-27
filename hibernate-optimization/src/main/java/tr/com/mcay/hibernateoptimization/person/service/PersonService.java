@@ -63,19 +63,7 @@ public class PersonService {
                 .map(PersonMapper.INSTANCE::personToPersonDTO)
                 .collect(Collectors.toList());
     }
-    private List<PersonDTO> personConverter(List<Person> persons){
-        List<PersonDTO> personDTOList = new ArrayList<>();
-      for (Person person : persons) {
-        PersonDTO personDto = new PersonDTO();
-        personDto.setFirstName(person.getFirstName());
-        personDto.setLastName(person.getLastName());
-        personDto.setEmail(person.getEmail());
-        personDto.setId(person.getId());
-        personDto.setAddresses(person.getAddresses());
-        personDTOList.add(personDto);
-      }
-        return personDTOList;
-    }
+
 
     public PersonDTO createPerson(PersonDTO personDTO) {
         Person person = PersonMapper.INSTANCE.personDTOToPerson(personDTO);
