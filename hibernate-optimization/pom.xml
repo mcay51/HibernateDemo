@@ -28,6 +28,10 @@
     </scm>
     <properties>
         <java.version>17</java.version>
+        <liquibase.changeLogFile>src/main/resources/db/changelog/db.changelog-master.yaml</liquibase.changeLogFile>
+        <liquibase.url>jdbc:postgresql://localhost:5432/HibernateOptimization</liquibase.url> <!-- Veritabanı URL'sini buraya girin -->
+        <liquibase.username>postgres</liquibase.username> <!-- Veritabanı kullanıcı adını buraya girin -->
+        <liquibase.password>postgres</liquibase.password> <!-- Veritabanı şifresini buraya girin -->
     </properties>
     <dependencies>
         <dependency>
@@ -76,6 +80,20 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+        </dependency>
+
+
     </dependencies>
 
     <build>
