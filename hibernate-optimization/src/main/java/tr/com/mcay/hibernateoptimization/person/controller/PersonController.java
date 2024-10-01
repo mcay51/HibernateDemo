@@ -3,6 +3,7 @@ package tr.com.mcay.hibernateoptimization.person.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import tr.com.mcay.hibernateoptimization.job.dto.UpdateEmailRequest;
 import tr.com.mcay.hibernateoptimization.person.dto.PersonDTO;
 import tr.com.mcay.hibernateoptimization.person.service.PersonService;
 
@@ -48,6 +49,21 @@ public class PersonController {
         PersonDTO personDTO = personService.getPersonByIdLazy(id);
         return ResponseEntity.ok(personDTO);
     }
-
-
+    // Toplu veri ekleme için bir endpoint
+    @PostMapping("/persons/batch-insert")
+    public ResponseEntity<List<PersonDTO>> saveAllPersonsBatch(@RequestBody List<PersonDTO> personDTOList) {
+        List<PersonDTO> savedPersons = personService. savePersonsInBatch(personDTOList);
+        return ResponseEntity.ok(savedPersons);
+    }
+    // Toplu güncelleme işlemi
+    @PutMapping("/persons/batch-update")
+    public ResponseEntity<List<PersonDTO>> updateAllPersons(@RequestBody List<PersonDTO> personDTOList) {
+        List<PersonDTO> updatedPersons = personService.updateAllPersonsBatch(personDTOList);
+        return ResponseEntity.ok(updatedPersons);
+    }
+    @PutMapping("/persons/update-emails")
+    public ResponseEntity<String> updateEmails(@RequestBody UpdateEmailRequest request) {
+        personService.updateEmailsForPersons(request.getNewEmail(), request.getIds());
+        return ResponseEntity.ok("Emails updated successfully.");
+    }
 }

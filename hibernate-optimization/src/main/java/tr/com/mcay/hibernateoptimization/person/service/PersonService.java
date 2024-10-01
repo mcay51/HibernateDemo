@@ -1,8 +1,8 @@
 package tr.com.mcay.hibernateoptimization.person.service;
 
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
-import tr.com.mcay.hibernateoptimization.address.dto.mapper.AddressMapper;
 import tr.com.mcay.hibernateoptimization.address.model.Address;
 import tr.com.mcay.hibernateoptimization.address.repository.AddressRepository;
 import tr.com.mcay.hibernateoptimization.person.dto.PersonDTO;
@@ -10,7 +10,6 @@ import tr.com.mcay.hibernateoptimization.person.dto.mapper.PersonMapper;
 import tr.com.mcay.hibernateoptimization.person.model.Person;
 import tr.com.mcay.hibernateoptimization.person.repository.PersonRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -82,5 +81,32 @@ public class PersonService {
         System.out.println("Bu noktada addresses henüz yüklenmemiştir.");
         return PersonMapper.INSTANCE.personToPersonDTO(person);
     }
+    @Transactional
+    public List<PersonDTO> updateAllPersonsBatch(List<PersonDTO> personDTOList) {
+            List<Person> persons = personDTOList.stream()
+                    .map(PersonMapper.INSTANCE::personDTOToPerson)
+                    .collect(Collectors.toList());
+            List<Person> updatedPersons = personRepository.saveAll(persons);
+            return updatedPersons.stream()
+                    .map(PersonMapper.INSTANCE::personToPersonDTO)
+                    .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public List<PersonDTO> savePersonsInBatch(List<PersonDTO> personDTOList) {
+        List<Person> persons = personDTOList.stream()
+                .map(PersonMapper.INSTANCE::personDTOToPerson)
+                .collect(Collectors.toList());
+        List<Person> savedPersons = personRepository.saveAll(persons);
+        return savedPersons.stream()
+                .map(PersonMapper.INSTANCE::personToPersonDTO)
+                .collect(Collectors.toList());
+    }
+    @Transactional
+    public void updateEmailsForPersons(String newEmail, List<Long> ids) {
+        personRepository.updateEmailsForPersons(newEmail, ids);
+    }
 }
+
+
 
