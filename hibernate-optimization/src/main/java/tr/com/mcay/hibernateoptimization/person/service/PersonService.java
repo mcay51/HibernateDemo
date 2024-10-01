@@ -2,7 +2,11 @@ package tr.com.mcay.hibernateoptimization.person.service;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import tr.com.mcay.hibernateoptimization.address.dto.AddressDTO;
+import tr.com.mcay.hibernateoptimization.address.dto.mapper.AddressMapper;
 import tr.com.mcay.hibernateoptimization.address.model.Address;
 import tr.com.mcay.hibernateoptimization.address.repository.AddressRepository;
 import tr.com.mcay.hibernateoptimization.person.dto.PersonDTO;
@@ -109,6 +113,23 @@ public class PersonService {
     @Transactional
     public void deletePerson(Long id) {
         personRepository.deleteById(id);
+    }
+
+    @Transactional
+    public PersonDTO savePersonWithAddress(PersonDTO personDTO, AddressDTO addressDTO) {
+        Person person = PersonMapper.INSTANCE.personDTOToPerson(personDTO);
+        Address address = AddressMapper.INSTANCE.addressDTOToAddress(addressDTO);
+
+        // Kişiyi ve adresi kaydet
+        Person responsePerson=personRepository.save(person);
+        // hata simulasyonu
+        if (true) {
+            throw new RuntimeException("Simulated Exception");
+        }
+        PersonDTO responsePersonDTO=PersonMapper.INSTANCE.personToPersonDTO(responsePerson);
+        address.setPerson(responsePerson);
+        addressRepository.save(address);
+        return responsePersonDTO;
     }
 }
 

@@ -3,6 +3,8 @@ package tr.com.mcay.hibernateoptimization.person.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import tr.com.mcay.hibernateoptimization.address.dto.AddressDTO;
+import tr.com.mcay.hibernateoptimization.job.dto.PersonWithAddressRequest;
 import tr.com.mcay.hibernateoptimization.job.dto.UpdateEmailRequest;
 import tr.com.mcay.hibernateoptimization.person.dto.PersonDTO;
 import tr.com.mcay.hibernateoptimization.person.service.PersonService;
@@ -70,5 +72,11 @@ public class PersonController {
     public ResponseEntity<Void> deletePerson(@PathVariable Long id) {
         personService.deletePerson(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/persons/new-person-with-address")
+    public ResponseEntity<Void> savePersonWithAddress(@RequestBody PersonWithAddressRequest request) {
+      personService.savePersonWithAddress(request.getPerson(),request.getAddress());
+       return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 }
