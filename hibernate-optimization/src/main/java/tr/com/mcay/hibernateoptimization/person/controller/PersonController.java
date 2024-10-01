@@ -66,4 +66,9 @@ public class PersonController {
         personService.updateEmailsForPersons(request.getNewEmail(), request.getIds());
         return ResponseEntity.ok("Emails updated successfully.");
     }
+    @DeleteMapping("/persons/{id}")
+    public ResponseEntity<Void> deletePerson(@PathVariable Long id) {
+        personService.deletePerson(id);
+        return ResponseEntity.noContent().build();
+    }
 }

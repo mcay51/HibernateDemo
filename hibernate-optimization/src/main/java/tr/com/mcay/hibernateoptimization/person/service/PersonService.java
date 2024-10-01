@@ -106,6 +106,10 @@ public class PersonService {
     public void updateEmailsForPersons(String newEmail, List<Long> ids) {
         personRepository.updateEmailsForPersons(newEmail, ids);
     }
+    @Transactional
+    public void deletePerson(Long id) {
+        personRepository.deleteById(id);
+    }
 }
 
 
