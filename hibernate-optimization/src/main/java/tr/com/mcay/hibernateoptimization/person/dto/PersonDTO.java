@@ -22,7 +22,7 @@ public class PersonDTO implements Serializable {
     private String firstName;
     private String lastName;
     private String email;
-    private List<Address> addresses = new ArrayList<>();
+    private List<AddressDTO> addresses = new ArrayList<>();
     private List<JobDTO> jobs = new ArrayList<>();
 
 }
