@@ -131,6 +131,14 @@ public class PersonService {
         addressRepository.save(address);
         return responsePersonDTO;
     }
+
+    public void nPlusOneProblem(){
+        // Person entity'si her biri bir veya daha fazla Address içerebilir
+        List<Person> persons = personRepository.findAll(); // N
+        for (Person person : persons) {
+            System.out.println(person.getAddresses()); // +1 sorgu, her bir kişi için
+        }
+    }
 }
 
 

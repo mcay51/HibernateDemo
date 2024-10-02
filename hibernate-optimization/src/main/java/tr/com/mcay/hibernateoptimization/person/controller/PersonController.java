@@ -79,4 +79,9 @@ public class PersonController {
       personService.savePersonWithAddress(request.getPerson(),request.getAddress());
        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
+
+    @GetMapping("/persons/nplusoneproblem")
+    public void nPlusOneProblem() {
+       personService.nPlusOneProblem();
+    }
 }
