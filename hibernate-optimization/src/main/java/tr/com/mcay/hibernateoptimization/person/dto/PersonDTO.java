@@ -1,5 +1,6 @@
 package tr.com.mcay.hibernateoptimization.person.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import tr.com.mcay.hibernateoptimization.address.dto.AddressDTO;
@@ -23,6 +24,7 @@ public class PersonDTO implements Serializable {
     private String lastName;
     private String email;
     private List<AddressDTO> addresses = new ArrayList<>();
+    @JsonIgnore
     private List<JobDTO> jobs = new ArrayList<>();
 
 }

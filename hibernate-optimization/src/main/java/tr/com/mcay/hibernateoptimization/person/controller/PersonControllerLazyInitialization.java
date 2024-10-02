@@ -19,7 +19,13 @@ public class PersonControllerLazyInitialization {
 
     @GetMapping("/persons/{id}/addresses")
     public ResponseEntity<PersonDTO> getProjectWithAddresses(@PathVariable Long id) {
-        PersonDTO projectDTO = personService.findPersonWithAddressesLazy(id);
-        return ResponseEntity.ok(projectDTO);
+        PersonDTO personDTO = personService.findPersonWithAddressesLazy(id);
+        return ResponseEntity.ok(personDTO);
     }
+    @GetMapping("/persons/{id}/notransaddresses")
+    public ResponseEntity<PersonDTO> getPersonWithoutTransaction(@PathVariable Long id) {
+        PersonDTO personDTO = personService.findPersonWithoutTransaction(id);
+        return ResponseEntity.ok(personDTO);
+    }
+
 }

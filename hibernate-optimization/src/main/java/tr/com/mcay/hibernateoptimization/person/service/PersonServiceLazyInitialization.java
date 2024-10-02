@@ -23,11 +23,25 @@ public class PersonServiceLazyInitialization {
     }
 
     // LazyInitializationException alacağımız yöntem
-    @Transactional
-    public PersonDTO findPersonWithAddressesLazy(Long projectId) {
-        Person person = personRepository.findById(projectId)
+    //@Transactional
+    public PersonDTO findPersonWithAddressesLazy(Long personId) {
+        Person person = personRepository.findById(personId)
                 .orElseThrow(() -> new EntityNotFoundException("Person not found"));
         // addresses'e erişmeye çalışıyoruz, ancak LAZY olduğu için session kapalı olduğunda hata oluşur
+        List<AddressDTO> addresses = person.getAddresses().stream()
+                .map(address -> AddressMapper.INSTANCE.addressToAddressDTO(address))
+                .collect(Collectors.toList());
+
+        PersonDTO personDTO = PersonMapper.INSTANCE.personToPersonDTO(person);
+        personDTO.setAddresses(addresses);
+
+        return personDTO;
+    }
+    public PersonDTO findPersonWithoutTransaction(Long id) {
+        Person person = personRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Person not found"));
+
+        // Transaction yok ama lazy load çalışacak
         List<AddressDTO> addresses = person.getAddresses().stream()
                 .map(address -> AddressMapper.INSTANCE.addressToAddressDTO(address))
                 .collect(Collectors.toList());
