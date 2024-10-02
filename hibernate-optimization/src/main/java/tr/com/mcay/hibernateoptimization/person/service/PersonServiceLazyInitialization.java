@@ -1,6 +1,8 @@
 package tr.com.mcay.hibernateoptimization.person.service;
 
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.persistence.Transient;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import tr.com.mcay.hibernateoptimization.address.dto.AddressDTO;
 import tr.com.mcay.hibernateoptimization.address.dto.mapper.AddressMapper;
@@ -21,6 +23,7 @@ public class PersonServiceLazyInitialization {
     }
 
     // LazyInitializationException alacağımız yöntem
+    @Transactional
     public PersonDTO findPersonWithAddressesLazy(Long projectId) {
         Person person = personRepository.findById(projectId)
                 .orElseThrow(() -> new EntityNotFoundException("Person not found"));
