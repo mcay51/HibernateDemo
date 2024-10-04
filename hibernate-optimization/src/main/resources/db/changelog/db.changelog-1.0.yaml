@@ -1,0 +1,336 @@
+  databaseChangeLog:
+    - changeSet:
+        id: "1"
+        author: "mustafa.cay"
+        changes:
+          - insert:
+              tableName: "person"
+              columns:
+                - column:
+                    name: "first_name"
+                    value: "Ahmet"
+                - column:
+                    name: "last_name"
+                    value: "Yılmaz"
+                - column:
+                    name: "email"
+                    value: "ahmet.yilmaz@example.com"
+
+          - insert:
+              tableName: "address"
+              columns:
+                - column:
+                    name: "street"
+                    value: "123 Ana Cadde"
+                - column:
+                    name: "city"
+                    value: "İstanbul"
+                - column:
+                    name: "zip_code"
+                    value: "34000"
+                - column:
+                    name: "person_id"
+                    value: "1"  # Ahmet Yılmaz'ın ID'si
+
+    - changeSet:
+        id: "2"
+        author: "mustafa.cay"
+        changes:
+          - insert:
+              tableName: "person"
+              columns:
+                - column:
+                    name: "first_name"
+                    value: "Mehmet"
+                - column:
+                    name: "last_name"
+                    value: "Demir"
+                - column:
+                    name: "email"
+                    value: "mehmet.demir@example.com"
+
+          - repeat:
+              forEach: 3
+              changes:
+                - insert:
+                    tableName: "address"
+                    columns:
+                      - column:
+                          name: "street"
+                          value: "456 Sıraselviler Cad."
+                      - column:
+                          name: "city"
+                          value: "Ankara"
+                      - column:
+                          name: "zip_code"
+                          value: "06000"
+                      - column:
+                          name: "person_id"
+                          value: "2"  # Mehmet Demir'in ID'si
+
+    - changeSet:
+        id: "3"
+        author: "mustafa.cay"
+        changes:
+          - insert:
+              tableName: "person"
+              columns:
+                - column:
+                    name: "first_name"
+                    value: "Ayşe"
+                - column:
+                    name: "last_name"
+                    value: "Kara"
+                - column:
+                    name: "email"
+                    value: "ayse.kara@example.com"
+
+          - repeat:
+              forEach: 2
+              changes:
+                - insert:
+                    tableName: "address"
+                    columns:
+                      - column:
+                          name: "street"
+                          value: "789 Yıldız Cad."
+                      - column:
+                          name: "city"
+                          value: "İzmir"
+                      - column:
+                          name: "zip_code"
+                          value: "35000"
+                      - column:
+                          name: "person_id"
+                          value: "3"  # Ayşe Kara'nın ID'si
+
+    - changeSet:
+        id: "4"
+        author: "mustafa.cay"
+        changes:
+          - insert:
+              tableName: "person"
+              columns:
+                - column:
+                    name: "Fatma"
+                    value: "Öztürk"
+                - column:
+                    name: "email"
+                    value: "fatma.ozturk@example.com"
+
+          - repeat:
+              forEach: 2
+              changes:
+                - insert:
+                    tableName: "address"
+                    columns:
+                      - column:
+                          name: "street"
+                          value: "321 Güzeller Cad."
+                      - column:
+                          name: "city"
+                          value: "Antalya"
+                      - column:
+                          name: "zip_code"
+                          value: "07000"
+                      - column:
+                          name: "person_id"
+                          value: "4"  # Fatma Öztürk'ün ID'si
+
+    - changeSet:
+        id: "5"
+        author: "mustafa.cay"
+        changes:
+          - insert:
+              tableName: "person"
+              columns:
+                - column:
+                    name: "Ali"
+                    value: "Çelik"
+                - column:
+                    name: "email"
+                    value: "ali.celik@example.com"
+
+          - repeat:
+              forEach: 3
+              changes:
+                - insert:
+                    tableName: "address"
+                    columns:
+                      - column:
+                          name: "street"
+                          value: "135 Kale Cad."
+                      - column:
+                          name: "city"
+                          value: "Bodrum"
+                      - column:
+                          name: "zip_code"
+                          value: "48400"
+                      - column:
+                          name: "person_id"
+                          value: "5"  # Ali Çelik'in ID'si
+
+    - changeSet:
+        id: "6"
+        author: "mustafa.cay"
+        changes:
+          - insert:
+              tableName: "person"
+              columns:
+                - column:
+                    name: "Elif"
+                    value: "Kaya"
+                - column:
+                    name: "email"
+                    value: "elif.kaya@example.com"
+
+          - repeat:
+              forEach: 4
+              changes:
+                - insert:
+                    tableName: "address"
+                    columns:
+                      - column:
+                          name: "street"
+                          value: "654 Mavi Cad."
+                      - column:
+                          name: "city"
+                          value: "Çeşme"
+                      - column:
+                          name: "zip_code"
+                          value: "35930"
+                      - column:
+                          name: "person_id"
+                          value: "6"  # Elif Kaya'nın ID'si
+
+    - changeSet:
+        id: "7"
+        author: "mustafa.cay"
+        changes:
+          - insert:
+              tableName: "person"
+              columns:
+                - column:
+                    name: "Canan"
+                    value: "Şahin"
+                - column:
+                    name: "email"
+                    value: "canan.sahin@example.com"
+
+          - repeat:
+              forEach: 3
+              changes:
+                - insert:
+                    tableName: "address"
+                    columns:
+                      - column:
+                          name: "street"
+                          value: "159 Bahar Cad."
+                      - column:
+                          name: "city"
+                          value: "Trabzon"
+                      - column:
+                          name: "zip_code"
+                          value: "61000"
+                      - column:
+                          name: "person_id"
+                          value: "7"  # Canan Şahin'in ID'si
+
+    - changeSet:
+        id: "8"
+        author: "mustafa.cay"
+        changes:
+          - insert:
+              tableName: "person"
+              columns:
+                - column:
+                    name: "Burak"
+                    value: "Koç"
+                - column:
+                    name: "email"
+                    value: "burak.koc@example.com"
+
+          - repeat:
+              forEach: 2
+              changes:
+                - insert:
+                    tableName: "address"
+                    columns:
+                      - column:
+                          name: "street"
+                          value: "852 Yeşil Cad."
+                      - column:
+                          name: "city"
+                          value: "Adana"
+                      - column:
+                          name: "zip_code"
+                          value: "01000"
+                      - column:
+                          name: "person_id"
+                          value: "8"  # Burak Koç'un ID'si
+
+    - changeSet:
+        id: "9"
+        author: "mustafa.cay"
+        changes:
+          - insert:
+              tableName: "person"
+              columns:
+                - column:
+                    name: "Deniz"
+                    value: "Sönmez"
+                - column:
+                    name: "email"
+                    value: "deniz.sonmez@example.com"
+
+          - repeat:
+              forEach: 3
+              changes:
+                - insert:
+                    tableName: "address"
+                    columns:
+                      - column:
+                          name: "street"
+                          value: "753 Güneş Cad."
+                      - column:
+                          name: "city"
+                          value: "Bursa"
+                      - column:
+                          name: "zip_code"
+                          value: "16000"
+                      - column:
+                          name: "person_id"
+                          value: "9"  # Deniz Sönmez'in ID'si
+
+    - changeSet:
+        id: "10"
+        author: "mustafa.cay"
+        changes:
+          - insert:
+              tableName: "person"
+              columns:
+                - column:
+                    name: "Zeynep"
+                    value: "Akman"
+                - column:
+                    name: "email"
+                    value: "zeynep.akman@example.com"
+
+          - repeat:
+              forEach: 12
+              changes:
+                - insert:
+                    tableName: "address"
+                    columns:
+                      - column:
+                          name: "street"
+                          value: "987 Fıstık Cad."
+                      - column:
+                          name: "city"
+                          value: "Konya"
+                      - column:
+                          name: "zip_code"
+                          value: "42000"
+                      - column:
+                          name: "person_id"
+                          value: "10"  # Zeynep Akman'ın ID'si
