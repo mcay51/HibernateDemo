@@ -36,3 +36,14 @@ build/
 
 ### Mac OS ###
 .DS_Store
+/.idea/dataSources.xml
+/.idea/encodings.xml
+/hibernate-criteria/.mvn/wrapper/maven-wrapper.properties
+/.idea/misc.xml
+/hibernate-criteria/mvnw
+/hibernate-optimization/mvnw
+/hibernate-optimization/mvnw.cmd
+/hibernate-criteria/mvnw.cmd
+/.idea/vcs.xml
+/.idea/uiDesigner.xml
+/.idea/.gitignore
