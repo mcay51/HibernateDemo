@@ -59,3 +59,33 @@ Her sınıf için bağımsız bir tablo oluşur; bu tablolar arasında herhangi 
 - Üst sınıf: `BaseEntityTpc`
 - Alt sınıf: `UserTpc`
 - Tablolar: `BaseEntityTpc`, `UserTpc` (tamamen bağımsızdır)
+
+```mermaid  
+classDiagram
+  direction BT
+  class BaseEntity
+  class BaseEntityTpc
+  class BaseItem
+  class Glasses
+  class GlassesItem
+  class GlassesJoin
+  class InheritanceTypeJavaApplication
+  class InheritanceTypeJavaApplicationTests
+  class SingleTable
+  class SingleTableItem
+  class Toy
+  class ToyItem
+  class ToyJoin
+  class User
+  class UserTpc
+
+Glasses  -->  SingleTable
+GlassesItem  -->  SingleTableItem
+GlassesJoin  -->  BaseItem
+Toy  -->  SingleTable
+ToyItem  -->  SingleTableItem
+ToyJoin  -->  BaseItem
+User  -->  BaseEntity
+UserTpc  -->  BaseEntityTpc 
+
+```
